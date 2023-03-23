@@ -1,12 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+
 .background {
-  position: fixed;
   background-image: url(/public/bg.jpg);
   background-size: cover;
   background-position: center;
   width: 100vw;
   height: 100vh;
+  position: fixed;
+  z-index: 0;
+  top: 0;
 }
 
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; color: inherit; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
 
 
 
