@@ -1,4 +1,29 @@
-.App {
+.background {
+  position: fixed;
+  background-image: url(/public/bg.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +60,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
