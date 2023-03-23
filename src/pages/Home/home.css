@@ -12,37 +12,46 @@
   align-items: center;
   height: 100vh;
   text-transform: uppercase;
-  gap: 2em;
 }
 
 .home-page_text {
+  clip-path: inset(-1px);
   text-align: right;
   letter-spacing: 0.5em;
-  width: 500px;
+  flex-basis: 32rem;
 }
 
 .home-nav {
-  list-style: none;
-  padding: 0;
+  clip-path: inset(-1px);
   font-size: 4em;
   font-weight: 700;
   letter-spacing: 0.2em;
-  width: 500px;
+  flex-basis: 32rem;
+}
+.list-none {
+  list-style: none;
+  padding: 0 0;
+}
+.home-menu_item {
+  margin-left: 2rem;
 }
 
 .middle-line {
   border-left: 1px solid #fff;
-    height: 14em;
+  height: 14em;
 }
 
 .middle-line span {
-    
 }
 
 .home-socials {
   position: absolute;
   left: 25vw;
   bottom: 20vh;
+}
+
+.home-socials_item {
+  clip-path: inset(0 0 -1px 0);
 }
 
 .home-socials ul {
