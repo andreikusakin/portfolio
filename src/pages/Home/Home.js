@@ -38,7 +38,7 @@ export default function Home() {
       <div className="home-page_content">
         <div className="home-page_text">
           <motion.div
-            initial={{ x: 680 }}
+            initial={{ x: 700 }}
             animate={{ x: 0 }}
             transition={{ duration: 2, delay: 1 }}
             
@@ -48,8 +48,8 @@ export default function Home() {
           </motion.div>
         </div>
         <motion.span
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
+          initial={{ scale: 0, rotate: 90 }}
+          animate={{ scale: 1, rotate: 0 }}
           transition={{ duration: 1 }}
           className="middle-line"
         ></motion.span>
@@ -57,9 +57,9 @@ export default function Home() {
           <motion.ul className="list-none" transition={{ staggerChildren: 2 }}>
             {menuItem.map((item, i) => (
               <motion.li
-                initial={{ x: -620 }}
-                animate={{ x: 0 }}
-                transition={{ duration: 2, delay: 1 + i * 0.5 }}
+                initial={{ x: -720, skew: "-30deg" }}
+                animate={{ x: 0, skew: "0" }}
+                transition={{ duration: 2, delay: 1.5 + i * 0.1 }}
               >
                 <a href={item.link}>
                   <motion.div 
