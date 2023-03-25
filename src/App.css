@@ -1,16 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:slnt&display=swap');
 
 .App {
-  background-color: #000;
+  
+ 
 }
 .background {
+  
   background: url(/public/bg.jpg);
   background-size: cover;
   background-position: center;
   width: 100vw;
   height: 100vh;
   position: fixed;
-  z-index: 0;
+  z-index: -5;
   top: 0;
 }
 

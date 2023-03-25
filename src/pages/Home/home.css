@@ -74,6 +74,7 @@
     width: 80vw;
     clip-path: none;
     margin-bottom: 1rem;
+    overflow: visible;
   }
   .home-nav {
     margin-top: 2rem;
@@ -81,6 +82,7 @@
     flex-basis: 0;
     width: 80vw;
     text-align: right;
+    overflow: visible;
   }
   .home-socials {
     left: 15vw;
