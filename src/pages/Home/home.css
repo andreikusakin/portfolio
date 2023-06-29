@@ -3,7 +3,7 @@
   z-index: 5;
   overflow: hidden;
   color: #fff;
-  font-family: "Inter", sans-serif;
+  font-family: "Bandein Sans Web", sans-serif;
 }
 
 .home-page_content {
@@ -25,7 +25,10 @@
 
 .home-nav {
   font-size: clamp(1em, 2vw + 2em, 4em);
-  font-weight: 700;
+  /* font-weight: 700; */
+  font-family: "Bandein Sans Strange Variable", sans-serif;
+  font-variation-settings: "wdth" 400;
+  font-weight: 500;
   letter-spacing: 0.2em;
   flex-basis: 32rem;
   overflow: hidden;

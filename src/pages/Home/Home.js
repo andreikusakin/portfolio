@@ -132,7 +132,7 @@ export default function Home() {
                 <Link to={item.link}>
                   <motion.div
                     className="home-menu_item"
-                    whileHover={{ x: 20, fontVariationSettings: "slnt: -10" }}
+                    whileHover={{ fontVariationSettings: "'wdth' 800" }}
                     transition={{ type: "tween", duration: 0.3 }}
                   >
                     {item.name}
