@@ -15,7 +15,7 @@ function App() {
         transition={{ duration: 2, delay: 2 }}
         className="background"
       ></motion.div>
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route index element={<Home />} />
           <Route path="About" element={<About />} />

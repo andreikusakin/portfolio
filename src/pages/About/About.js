@@ -10,6 +10,10 @@ const listItemMenu = {
 
 const menuItem = [
   {
+    name: "Home",
+    link: "/"
+  },
+  {
     name: "Work",
     link: "",
   },
