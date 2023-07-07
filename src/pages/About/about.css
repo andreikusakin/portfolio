@@ -3,6 +3,90 @@
   z-index: 5;
   overflow: hidden;
   color: #fff;
+  display: flex;
+  
+  justify-content: center;
+  /* background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(40px);
+  width: 100%;
+  height: 100%; */
+  
+}
+
+.blur-background{
+  z-index: -2;
+  position: fixed;
+  
+  width: 100vw; 
+  height: 100vh; 
+  overflow: hidden; 
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(50px);
+}
+
+.about-photo{
+  z-index: -1;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.about-photo img{
+  margin: 10vh;
+  transform: translate(-50%,0%);
+}
+
+.about-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  width: 70vw;
+  left: -5vw;
+  /* margin-left:  10vw; */
+  height: 100vh;
+  
+  
+}
+
+.about-title{
+  width: 70%;
+  margin-bottom: 20vh;
+}
+
+.about-title h2 {
+  text-transform: uppercase;
+  font-family: "Bandein Sans Strange Variable", sans-serif;
+  font-variation-settings: "wdth" 400;
+  font-weight: 600;
+  font-size: clamp(3rem, 2vw + 3rem, 6rem);
+  margin: 0;
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+  
+}
+
+.about-title hr{
+  border:#fff solid 1px;
+  /* margin-bottom: 30vh; */
+  
+  
+}
+
+
+
+.about-text {
+  font-size: clamp(1rem, 1vw + 1rem, 2rem);
+  margin-left: 30vw;
+}
+
+.about-content a{
+  font-size: clamp(1rem, 1vw + 1rem, 1.5rem);
+  text-decoration: underline;
+  margin-left: 3vw;
 }
 
 .about-nav {
@@ -12,7 +96,7 @@
   font-family: "Bandein Sans Strange Variable", sans-serif;
   font-variation-settings: "wdth" 400;
   font-weight: 500;
-  
+  top: 0;
   right: 0;
   display: flex;
   flex-direction: column;
@@ -28,6 +112,68 @@
   
   color: transparent;
   -webkit-text-stroke: 1px white;
+}
+
+@media (max-width: 900px) {
+  .about-nav {
+    visibility: hidden;
+  }
+  .about-content{
+    width: fit-content;
+    /* margin-right: 10vw; */
+    width: 80%;
+    left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .about-content{
+    
+
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* position: fixed; */
+
+  width: 100%;
+  margin: 0;
+  height: fit-content;
+  }
+  .about-photo{
+    position: relative;
+    height: 50vh;
+
+  }
+  .about-photo img {
+    margin: 0;
+    transform: none;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .about-text {
+    margin-left: 0;
+    margin: 1rem;
+  }
+
+  .about-title{
+    width: 100%;
+    padding: 1rem;
+    margin: 0px;
+    
+  }
+
+  .about-title h2{
+    color: #fff;
+    -webkit-text-stroke: 0;
+
+  }
+
+  .about-title hr{
+    /* visibility: hidden; */
+  }
 }
 
 
