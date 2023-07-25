@@ -109,7 +109,7 @@
   
 }
 
-.nav-list :nth-child(3){
+.about-nav .nav-list :nth-child(3){
   
   color: transparent;
   -webkit-text-stroke: 1px white;

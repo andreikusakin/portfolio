@@ -34,20 +34,14 @@ const menuItem = [
   },
   {
     name: "Contact",
-    link: "",
+    link: "/contact",
   },
 ];
 
 export default function About() {
   return (
     <div className="about-page">
-      <motion.div
-        className="blur-background"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
-        exit={{ opacity: 0, transition:{ duration: 1.5, delay: .5 } }}
-      ></motion.div>
+      
 
       <div className="about-content">
         <motion.div
@@ -101,32 +95,7 @@ export default function About() {
           exit={{ y: 30, opacity: 0, transition: { duration: 1 } }}
         >resume</motion.a>
       </div>
-      <nav className="about-nav">
-        <motion.ul
-          className="nav-list"
-          variants={containerMenu}
-          initial="hidden"
-          animate="visible"
-          exit={{ opacity: 0 }}
-        >
-          {menuItem.map((item, i) => (
-            <Link to={item.link} key={i}>
-              <motion.li
-                variants={listItemMenu}
-                className="about-menu-item"
-                transition={{ duration: 1 }}
-              >
-                <motion.div
-                  whileHover={{ fontVariationSettings: "'wdth' 600" }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {item.name}
-                </motion.div>
-              </motion.li>
-            </Link>
-          ))}
-        </motion.ul>
-      </nav>
+      
     </div>
   );
 }
