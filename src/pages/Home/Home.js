@@ -30,7 +30,7 @@ const menuItem = [
   },
   {
     name: "Contact",
-    link: "",
+    link: "/contact",
   },
 ];
 

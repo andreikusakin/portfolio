@@ -1,50 +1,47 @@
-import React from 'react'
-import "./contact.css"
+import React from "react";
+import "./contact.css";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const containerMenu = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.5,
-        delayChildren: 1,
-      },
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.5,
+      delayChildren: 1,
     },
-  };
-  
-  const listItemMenu = {
-    hidden: { x: 200, opacity: 0 },
-    visible: { x: 0, opacity: 1 },
-  };
-  
-  // const menuItem = [
-  //   {
-  //     name: "Home",
-  //     link: "/",
-  //   },
-  //   {
-  //     name: "Work",
-  //     link: "",
-  //   },
-  //   {
-  //     name: "About",
-  //     link: "/about",
-  //   },
-  //   {
-  //     name: "Contact",
-  //     link: "/contact",
-  //   },
-  // ];
+  },
+};
+
+const listItemMenu = {
+  hidden: { x: 200, opacity: 0 },
+  visible: { x: 0, opacity: 1 },
+};
+
+const socials = [
+  {
+    name: "linkedin",
+    link: "",
+  },
+  {
+    name: "github",
+    link: "",
+  },
+  {
+    name: "twitter",
+    link: "",
+  },
+  {
+    name: "instagram",
+    link: "",
+  },
+];
 
 export default function Contact() {
   return (
     <div className="contact-page">
-     
-
-      <div className="about-content">
-        
+      <div className="contact-content">
         <div className="page-title">
           <motion.h2
             initial={{ x: -150, opacity: 0 }}
@@ -62,51 +59,35 @@ export default function Contact() {
           ></motion.hr>
         </div>
 
-        <motion.div className="about-text"
+        <motion.div
+          className="contact-text"
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 1 }}
           exit={{ opacity: 0, x: -50, transition: { duration: 1 } }}
         >
-          <p>
-            Hi there! I'm Andrei Kusakin, a full-stack web developer with a
-            degree in Software Engineering. I love crafting websites and
-            applications that are not only easy to use but also look great.
-          </p>
-          <p>
-            Beyond coding, I enjoy making music and photography in my free time.
-            It helps me to balance my technical work and keeps me creative.
-          </p>
-        </motion.div>
+          <h4>Email</h4>
+          <motion.div
+            whileHover={{ x: 10 }}
+          ><a href="mailto: andrewkusakin@me.com" className="email-link">
+            andrewkusakin@me.com
+          </a></motion.div>
+          
 
-        
-      </div>
-      {/* <nav className="contact-nav">
-        <motion.ul
-          className="nav-list"
-          variants={containerMenu}
-          initial="hidden"
-          animate="visible"
-          exit={{ opacity: 0 }}
-        >
-          {menuItem.map((item, i) => (
-            <Link to={item.link} key={i}>
+          <h4>Socials</h4>
+          <ul>
+            {socials.map((item, i) => (
               <motion.li
-                variants={listItemMenu}
-                className="about-menu-item"
-                transition={{ duration: 1 }}
+                whileHover={{ x: 10 }}
               >
-                <motion.div
-                  whileHover={{ fontVariationSettings: "'wdth' 600" }}
-                  transition={{ duration: 0.3 }}
-                >
+                <a href={item.link} key={i}>
                   {item.name}
-                </motion.div>
+                </a>
               </motion.li>
-            </Link>
-          ))}
-        </motion.ul>
-      </nav> */}
+            ))}
+          </ul>
+        </motion.div>
+      </div>
     </div>
-  )
+  );
 }

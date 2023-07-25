@@ -13,16 +13,7 @@
   
 }
 
-.blur-background{
-  z-index: -2;
-  position: fixed;
-  
-  width: 100vw; 
-  height: 100vh; 
-  overflow: hidden; 
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(50px);
-}
+
 
 .about-photo{
   z-index: -1;
@@ -47,7 +38,8 @@
   width: 70vw;
   left: -5vw;
   /* margin-left:  10vw; */
-  height: 100vh;
+  /* height: 100vh; */
+  margin-top: 15vh;
   
   
 }
