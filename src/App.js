@@ -3,24 +3,21 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 import Menu from "./components/menu/Menu";
-import { Routes, Route, useLocation } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  useLocation,
+  Outlet,
+  BrowserRouter,
+} from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 function App() {
   const location = useLocation();
-  console.log(location)
+  console.log(location);
 
-  const [menuVisible, setMenuVisible] = useState(false);
 
-  useEffect(() => {
-    const path = location.pathname;
-    if (path === '/') {
-      setMenuVisible(false);
-    } else {
-      setMenuVisible(true);
-    }
-  }, [location]);
 
   return (
     <div className="App">
@@ -30,14 +27,23 @@ function App() {
         transition={{ duration: 2, delay: 2 }}
         className="background"
       ></motion.div>
-      <Menu visible={menuVisible} />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </AnimatePresence>
+      
+        
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              
+                <Route index element={<Home />} />
+                <Route path="/" element={<Menu />} >
+                  <Route path="/about" element={<About />}  />
+                  <Route path="/contact" element={<Contact />}  />
+                </Route>
+              
+            </Routes>
+          </AnimatePresence>
+        
+     
+
+    
     </div>
   );
 }
