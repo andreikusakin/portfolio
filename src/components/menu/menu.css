@@ -26,11 +26,29 @@
     font-family: "Bandein Sans Strange Variable", sans-serif;
     font-variation-settings: "wdth" 400;
     font-weight: 500;
-    display: flex;
+    font-size: clamp(1rem, 1vw + 3rem, 3rem);
+    /* display: flex; */
+    justify-content: end;
+    align-items: center;
+    text-align: right;
     width: 100%;
     height: 100%;
     z-index: 990;
     
+  }
+
+  .menu-fullscreen-bg{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 60vw;
+    height: 100%;
+    background-color: #000;
+    min-width: 600px;
+  }
+
+  .side-menu-item-fullscreen {
+    margin-right: 2rem;
   }
 
   .blur-background{
@@ -46,7 +64,7 @@
 
   .menu-btn {
     position: fixed;
-    
+    display: none;
     top: 2vh;
     right: 2vh;
     z-index: 999;
@@ -65,4 +83,22 @@
 
   .menu-btn:hover {
     cursor: pointer;
+  }
+
+  @media (max-width: 1000px) {
+    .menu-btn {
+      display: block;
+    }
+
+    .side-menu {
+      display: none;
+    }
+
+
+  }
+
+  @media (min-width: 1000px) {
+    .menu-fullscreen-bg {
+      display: none;
+    }
   }

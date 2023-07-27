@@ -20,6 +20,10 @@ const containerMenuFullScreen = {
   visible: {
     opacity: 1,
     display: "flex",
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0,
+    },
   },
   exit: {
     opacity: 0,
@@ -177,13 +181,11 @@ export default function Menu({ visible }) {
       <motion.nav className="side-menu">
         <motion.ul
           className="nav-list"
-          //   style={{
-          //     selectedItem
-          //   }}
+          
           variants={containerMenu}
           initial="hidden"
           animate={visible ? "visible" : "exit"}
-          //   exit={{ opacity: 0 }}
+       
         >
           {menuItem.map((item, i) => (
             <Link to={item.link} key={i}>
@@ -212,12 +214,13 @@ export default function Menu({ visible }) {
       <motion.nav
         variants={containerMenuFullScreen}
         initial="hidden"
-        animate={menuIsOpen ? "visible" : "hidden"}
-        exit="exit"
+        animate={menuIsOpen ? "visible" : "exit"}
+        
         className="menu-fullscreen"
       >
         <div className="menu-fullscreen-bg">
-          <ul>
+          <motion.ul
+          >
             {menuItem.map((item, i) => (
               <Link
                 to={item.link}
@@ -244,7 +247,7 @@ export default function Menu({ visible }) {
                 </motion.li>
               </Link>
             ))}
-          </ul>
+          </motion.ul>
         </div>
       </motion.nav>
     </motion.div>
