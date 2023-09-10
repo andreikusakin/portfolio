@@ -1,0 +1,124 @@
+.work-page {
+  z-index: 5;
+  width: 80%;
+  color: #fff;
+  padding-top: 3%;
+  padding-left: 5vw;
+  /* display: flex;
+
+  justify-content: center; */
+  /* flex-direction: column; */
+  
+}
+
+
+
+.work-sections {
+  display: flex;
+  justify-content: space-between;
+  
+}
+.work-left{
+  position: relative;
+  width: 35%;
+}
+
+.work-left ul {
+  padding: 0;
+}
+
+
+
+.work-left h3 {
+  text-transform: uppercase;
+  font-family: "Bandein Sans Strange Variable", sans-serif;
+  font-variation-settings: "wdth" 400;
+  font-weight: 600;
+  font-size: clamp(1rem, 1vw + 0.7rem, 2rem);
+  
+}
+
+.work-right {
+  position: relative;
+  width: 65%;
+  
+  
+}
+
+.project-section {
+  position:absolute;
+}
+
+
+
+
+
+
+
+
+
+.project-content {
+  width: 80%;
+  height: 60vh;
+}
+
+
+
+.project-title hr {
+  border: #fff solid 1px;
+  /* margin-bottom: 30vh; */
+}
+
+.project-photo {
+  z-index: -1;
+
+  position: absolute;
+  
+  left: 20%;
+  /* position: fixed; */
+  margin-left: auto;
+  background-size: cover;
+  background-position: center;
+  height: 70vh;
+  width: 20vw;
+  max-width: 30rem;
+  max-height: 60rem;
+  transform: translateX(10rem);
+}
+
+.project-description {
+  margin-top: 30%;
+  margin-left: auto;
+  margin-right: 10%;
+  max-width: 40%;
+  font-size: clamp(1rem, 1vw + 1rem, 2rem);
+}
+
+
+.project-category {
+  font-family: "Bandein Sans Strange Variable", sans-serif;
+  margin-left: 10%;
+  margin-top: 5%;
+  max-width: 40%;
+  font-size: clamp(1rem, 1vw + 1rem, 2rem);
+}
+
+@media (max-width: 1000px) {
+  .work-page {
+    width: 100%;
+    
+  }
+}
+
+@media (max-width: 768px) {
+  .work-left {
+    width: 80%;
+  }
+  .work-left h3 {
+    font-size: clamp(1rem, 2vw + 1rem, 3rem);
+  }
+  .work-right {
+    width: 0;
+  }
+}
+

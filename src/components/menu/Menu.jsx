@@ -45,7 +45,7 @@ const menuItem = [
   },
   {
     name: "Work",
-    link: "",
+    link: "/work",
   },
   {
     name: "About",
@@ -116,11 +116,21 @@ export default function Menu({ visible }) {
   const location = useLocation();
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      if (window.innerWidth > 1000) {
+        setMenuIsOpen(false);
+      }
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <motion.div
-    // initial={{ display: "none" }}
-    // animate={visible ? { display: "block" } : { display: "none" }}
-    >
+    <motion.div>
       <motion.div
         className="blur-background"
         variants={background}
@@ -128,7 +138,7 @@ export default function Menu({ visible }) {
         animate={visible ? "visible" : "exit"}
         exit="exit"
       ></motion.div>
-      
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={visible ? { opacity: 1 } : { opacity: 0 }}
@@ -181,11 +191,9 @@ export default function Menu({ visible }) {
       <motion.nav className="side-menu">
         <motion.ul
           className="nav-list"
-          
           variants={containerMenu}
           initial="hidden"
           animate={visible ? "visible" : "exit"}
-       
         >
           {menuItem.map((item, i) => (
             <Link to={item.link} key={i}>
@@ -215,12 +223,10 @@ export default function Menu({ visible }) {
         variants={containerMenuFullScreen}
         initial="hidden"
         animate={menuIsOpen ? "visible" : "exit"}
-        
         className="menu-fullscreen"
       >
         <div className="menu-fullscreen-bg">
-          <motion.ul
-          >
+          <motion.ul>
             {menuItem.map((item, i) => (
               <Link
                 to={item.link}

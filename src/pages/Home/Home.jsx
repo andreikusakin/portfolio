@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import "./home.css";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const socials = [
   {
@@ -22,7 +22,7 @@ const menuItem = [
   
   {
     name: "Work",
-    link: "",
+    link: "/work",
   },
   {
     name: "About",
@@ -75,6 +75,7 @@ export default function Home() {
   return (
     
     <div className="home-page">
+      {/* <Outlet /> */}
       <div className="home-page_content">
         <div className="home-page_text">
           <motion.div
@@ -92,7 +93,7 @@ export default function Home() {
               transition={{ duration: 1.5, type: "tween"}}
               exit={{ x: 780 }}
             >
-              Andrei kusakin
+              Andrew Kusakin
             </motion.h3>
             <motion.p
               variants={listItemText}
@@ -174,5 +175,6 @@ export default function Home() {
         </motion.ul>
       </div>
     </div>
+    
   );
 }
