@@ -20,6 +20,7 @@
 }
 .work-left{
   position: relative;
+  max-width: 40rem;
   width: 35%;
 }
 

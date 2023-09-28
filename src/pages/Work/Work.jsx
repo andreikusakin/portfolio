@@ -16,23 +16,49 @@ const projectsList = [
   },
   {
     name: "Andrew Kusakin Photography",
-    image: "/aspengrove.jpg",
+    image: "/akphotography.jpg",
     year: 2022,
     category: "design & development",
-    url: "https://www.aspengroveofficial.com/",
+    url: "https://kusakinphoto.com/",
     description:
-      "Daniel Isaenko, known as Aspen Grove, is a singer-songwriter and producer from Ukraine. He has released two albums, one EP, and several singles. His music is a blend of indie, folk, and electronic.",
+      "A digital showcase of my photography work - from weddings and portraits to travel shots. Designed with simplicity, it's a mix of my web development and photo skills.",
+  },
+  {
+    name: "VisionVault",
+    image: "/visionvault.jpg",
+    year: 2022,
+    category: "design & development",
+    url: "https://wsuvpwepbz.us-east-1.awsapprunner.com/",
+    description:
+      "VisionVault is a platform for photographers to deliver, and share their photos to clients. It provides a user-friendly and aesthetically pleasing interface for both the photographers and their clients.",
   },
 ];
+
+const workLeftAnimations = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.5,
+      delayChildren: 0.5,
+    },
+  },
+  exit: {
+    opacity: 0
+  }
+};
+
+const leftListItem = {
+  hidden: { x: 50, opacity: 0 },
+  visible: { x: 0, opacity: 1 },
+};
 
 export default function Work() {
   const [mouseHover, setMouseHover] = useState("");
   console.log(mouseHover);
 
   return (
-    
     <div className="work-page">
-      
       <div className="page-title">
         <motion.h2
           initial={{ x: -150, opacity: 0 }}
@@ -51,9 +77,15 @@ export default function Work() {
       </div>
       <div className="work-sections">
         <div className="work-left">
-          <ul>
+          <motion.ul
+          variants={workLeftAnimations}
+          initial="hidden"
+          animate="visible"
+          exit="exit">
             {projectsList.map((p, index) => (
-              <li
+              <motion.li
+              variants={leftListItem}
+              transition={{ duration: 1 }}
                 key={index}
                 onMouseEnter={() => {
                   setMouseHover(`${p.name}`);
@@ -71,14 +103,14 @@ export default function Work() {
                     <FiArrowUpRight />
                   </a>
                 </motion.h3>
-              </li>
+              </motion.li>
             ))}
-          </ul>
+          </motion.ul>
         </div>
         <div className="work-right">
           {projectsList.map((p, index) => (
             <motion.div
-            key={index}
+              key={index}
               initial={{ opacity: 0 }}
               animate={{ opacity: p.name === mouseHover ? 1 : 0 }}
               transition={{ duration: 0.5 }}
@@ -117,6 +149,5 @@ export default function Work() {
         </div>
       </div>
     </div>
-    
   );
 }

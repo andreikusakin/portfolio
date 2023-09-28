@@ -91,6 +91,9 @@ export default function About() {
             Beyond coding, I enjoy making music and photography in my free time.
             It helps me to balance my technical work and keeps me creative.
           </p>
+          <p>
+            Based in Boston, MA
+          </p>
         </motion.div>
 
         <motion.a href=""
