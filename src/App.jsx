@@ -3,27 +3,19 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 import Menu from "./components/menu/Menu";
-import {
-  Routes,
-  Route,
-  useLocation,
-  Outlet,
-  BrowserRouter,
-} from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import Section from "./components/section/Section";
 import Work from "./pages/Work/Work";
 
 function App() {
   const location = useLocation();
-  console.log(location)
 
   const [menuVisible, setMenuVisible] = useState(false);
 
   useEffect(() => {
     const path = location.pathname;
-    if (path === '/') {
+    if (path === "/") {
       setMenuVisible(false);
     } else {
       setMenuVisible(true);
@@ -52,4 +44,3 @@ function App() {
 }
 
 export default App;
-

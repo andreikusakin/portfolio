@@ -1,42 +1,7 @@
 import React from "react";
 import "./contact.css";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-
-const containerMenu = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.5,
-      delayChildren: 1,
-    },
-  },
-};
-
-const listItemMenu = {
-  hidden: { x: 200, opacity: 0 },
-  visible: { x: 0, opacity: 1 },
-};
-
-const socials = [
-  {
-    name: "linkedin",
-    link: "",
-  },
-  {
-    name: "github",
-    link: "",
-  },
-  {
-    name: "twitter",
-    link: "",
-  },
-  {
-    name: "instagram",
-    link: "",
-  },
-];
+import { socials } from "../../data/socials";
 
 export default function Contact() {
   return (
@@ -67,19 +32,16 @@ export default function Contact() {
           exit={{ opacity: 0, x: -50, transition: { duration: 1 } }}
         >
           <h4>Email</h4>
-          <motion.div
-            whileHover={{ x: 10 }}
-          ><a href="mailto: andrewkusakin@me.com" className="email-link">
-            andrewkusakin@me.com
-          </a></motion.div>
-          
+          <motion.div whileHover={{ x: 10 }}>
+            <a href="mailto: andrewkusakin@me.com" className="email-link">
+              andrewkusakin@me.com
+            </a>
+          </motion.div>
 
           <h4>Socials</h4>
           <ul>
             {socials.map((item, i) => (
-              <motion.li
-                whileHover={{ x: 10 }}
-              >
+              <motion.li whileHover={{ x: 10 }}>
                 <a href={item.link} key={i}>
                   {item.name}
                 </a>

@@ -1,54 +1,10 @@
 import React from "react";
 import "./about.css";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-
-const containerMenu = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.5,
-      delayChildren: 1,
-    },
-  },
-};
-
-const listItemMenu = {
-  hidden: { x: 200, opacity: 0 },
-  visible: { x: 0, opacity: 1 },
-};
-
-const menuItem = [
-  {
-    name: "Home",
-    link: "/",
-  },
-  {
-    name: "Work",
-    link: "/work",
-  },
-  {
-    name: "About",
-    link: "/about",
-  },
-  {
-    name: "Contact",
-    link: "/contact",
-  },
-];
 
 export default function About() {
   return (
     <div className="about-page">
-      {/* <motion.div
-        className="blur-background"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
-        exit={{ opacity: 0, transition:{ duration: 1.5, delay: .5 } }}
-      ></motion.div> */}
-
       <div className="about-content">
         <motion.div
           className="about-photo"
@@ -76,7 +32,8 @@ export default function About() {
           ></motion.hr>
         </div>
 
-        <motion.div className="about-text"
+        <motion.div
+          className="about-text"
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 1 }}
@@ -91,20 +48,20 @@ export default function About() {
             Beyond coding, I enjoy making music and photography in my free time.
             It helps me to balance my technical work and keeps me creative.
           </p>
-          <p>
-            Based in Boston, MA
-          </p>
+          <p>Based in Boston, MA</p>
         </motion.div>
 
-        <motion.a href=""
+        <motion.a
+          href=""
           className="resume-link"
-          initial={{y: 30, opacity: 0 }}
+          initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
           exit={{ y: 30, opacity: 0, transition: { duration: 1 } }}
-        >resume</motion.a>
+        >
+          resume
+        </motion.a>
       </div>
-      
     </div>
   );
 }
