@@ -2,37 +2,8 @@ import React, { useState } from "react";
 import "./work.css";
 import { motion } from "framer-motion";
 import { FiArrowUpRight } from "react-icons/fi";
-import CallMadeIcon from "@mui/icons-material/CallMade";
+import { projectsList } from "../../data/projectsList";
 
-const projectsList = [
-  {
-    name: "Aspen Grove",
-    image: "/aspengrove.jpg",
-    year: 2022,
-    category: "design & development",
-    url: "https://www.aspengroveofficial.com/",
-    description:
-      "Daniel Isaenko, known as Aspen Grove, is a singer-songwriter and producer from Ukraine. He has released two albums, one EP, and several singles. His music is a blend of indie, folk, and electronic.",
-  },
-  {
-    name: "Andrew Kusakin Photography",
-    image: "/akphotography.jpg",
-    year: 2022,
-    category: "design & development",
-    url: "https://kusakinphoto.com/",
-    description:
-      "A digital showcase of my photography work - from weddings and portraits to travel shots. Designed with simplicity, it's a mix of my web development and photo skills.",
-  },
-  {
-    name: "VisionVault",
-    image: "/visionvault.jpg",
-    year: 2022,
-    category: "design & development",
-    url: "https://wsuvpwepbz.us-east-1.awsapprunner.com/",
-    description:
-      "VisionVault is a platform for photographers to deliver, and share their photos to clients. It provides a user-friendly and aesthetically pleasing interface for both the photographers and their clients.",
-  },
-];
 
 const workLeftAnimations = {
   hidden: { opacity: 0 },
@@ -44,8 +15,8 @@ const workLeftAnimations = {
     },
   },
   exit: {
-    opacity: 0
-  }
+    opacity: 0,
+  },
 };
 
 const leftListItem = {
@@ -55,7 +26,6 @@ const leftListItem = {
 
 export default function Work() {
   const [mouseHover, setMouseHover] = useState("");
-  console.log(mouseHover);
 
   return (
     <div className="work-page">
@@ -78,14 +48,15 @@ export default function Work() {
       <div className="work-sections">
         <div className="work-left">
           <motion.ul
-          variants={workLeftAnimations}
-          initial="hidden"
-          animate="visible"
-          exit="exit">
+            variants={workLeftAnimations}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
             {projectsList.map((p, index) => (
               <motion.li
-              variants={leftListItem}
-              transition={{ duration: 1 }}
+                variants={leftListItem}
+                transition={{ duration: 1 }}
                 key={index}
                 onMouseEnter={() => {
                   setMouseHover(`${p.name}`);
@@ -143,6 +114,9 @@ export default function Work() {
                 exit={{ opacity: 0, x: -50, transition: { duration: 1 } }}
               >
                 <p>{p.category}</p>
+                {p.techStack.split(", ").map((tech, i) => (
+                  <div key={i}>{tech}</div>
+                ))}
               </motion.div>
             </motion.div>
           ))}
