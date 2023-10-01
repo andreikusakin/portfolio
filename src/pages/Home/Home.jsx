@@ -2,21 +2,8 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import "./home.css";
 import { AnimatePresence, motion } from "framer-motion";
+import { socials } from "../../data/socials";
 
-const socials = [
-  {
-    name: "linkedin",
-    link: "",
-  },
-  {
-    name: "github",
-    link: "",
-  },
-  {
-    name: "twitter",
-    link: "",
-  },
-];
 
 const menuItem = [
   
