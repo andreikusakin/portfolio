@@ -69,16 +69,13 @@ const background = {
   exit: {
     opacity: 0,
     transition: { duration: 1.5, delay: 0.5 },
-    // transitionEnd: {
-    //   display: "none",
-    // },
   },
 };
 
 const top = {
   rest: { rotate: 0, y: 0 },
   open: {
-    y: 12,
+    y: "12px",
     rotate: 45,
     transition: {
       duration: 0.2,
@@ -104,7 +101,7 @@ const middle = {
 const bottom = {
   rest: { rotate: 0, y: 0 },
   open: {
-    y: -12,
+    y: "-12px",
     rotate: -45,
     transition: {
       duration: 0.2,
@@ -120,11 +117,11 @@ export default function Menu({ visible }) {
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+      
       if (window.innerWidth > 1000) {
         setMenuIsOpen(false);
       }
-    }
+    };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
