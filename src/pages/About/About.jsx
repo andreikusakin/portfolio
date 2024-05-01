@@ -52,7 +52,7 @@ export default function About() {
         </motion.div>
 
         <motion.a
-          href="https://storage-bucket-ak.s3.amazonaws.com/resume.pdf"
+          href="./Andrei_Kusakin_Resume.pdf"
           className="resume-link"
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
