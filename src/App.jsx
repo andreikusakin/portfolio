@@ -7,6 +7,8 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Work from "./pages/Work/Work";
+import { Scene } from "./components/scene/Scene";
+
 
 function App() {
   const location = useLocation();
@@ -25,11 +27,13 @@ function App() {
   return (
     <div className="App">
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 2 }}
-        transition={{ duration: 2, delay: 2 }}
+        // initial={{ opacity: 0 }}
+        // animate={{ opacity: 2 }}
+        // transition={{ duration: 2, delay: 2 }}
         className="background"
-      ></motion.div>
+      >
+        <Scene />
+      </motion.div>
       <Menu visible={menuVisible} />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
