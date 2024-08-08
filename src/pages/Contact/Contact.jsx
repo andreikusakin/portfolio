@@ -33,8 +33,8 @@ export default function Contact() {
         >
           <h4>Email</h4>
           <motion.div whileHover={{ x: 10 }}>
-            <a href="mailto: andrewkusakin@me.com" className="email-link">
-              andrewkusakin@me.com
+            <a href="mailto: kusakindev@gmail.com" className="email-link">
+              kusakindev@gmail.com
             </a>
           </motion.div>
 
