@@ -102,7 +102,6 @@ export default function Home() {
 
         <nav className="home-nav">
           <motion.ul
-            className="list-none"
             variants={containerMenu}
             initial="hidden"
             animate="visible"
