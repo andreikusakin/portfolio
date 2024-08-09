@@ -1,4 +1,5 @@
 import "./App.css";
+import React, { useRef } from "react";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
@@ -14,6 +15,7 @@ function App() {
   const location = useLocation();
 
   const [menuVisible, setMenuVisible] = useState(false);
+  const mouse = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const path = location.pathname;
@@ -24,15 +26,21 @@ function App() {
     }
   }, [location]);
 
+  const handleMouseMove = (event) => {
+    mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  };
+
+
   return (
-    <div className="App">
+    <div className="App" onMouseMove={handleMouseMove}>
       <motion.div
-        // initial={{ opacity: 0 }}
-        // animate={{ opacity: 2 }}
-        // transition={{ duration: 2, delay: 2 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 2 }}
+        transition={{ duration: 2, delay: 2 }}
         className="background"
       >
-        <Scene />
+        <Scene mouse={mouse} />
       </motion.div>
       <Menu visible={menuVisible} />
       <AnimatePresence mode="wait">
