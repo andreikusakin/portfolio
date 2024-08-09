@@ -1,67 +1,83 @@
 import * as THREE from "three";
 import React, { useRef } from "react";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
-import { shaderMaterial } from "@react-three/drei";
+import {
+  OrbitControls,
+  PerspectiveCamera,
+  shaderMaterial,
+} from "@react-three/drei";
+import { vertexShader } from "./vertexShader";
+import { fragmentShader } from "./fragmentShader";
+import {
+  EffectComposer,
+  Noise,
+  ChromaticAberration,
+} from "@react-three/postprocessing";
+import { GlitchMode, BlendFunction, ToneMappingMode } from "postprocessing";
 
 const CustomShaderMaterial = shaderMaterial(
   {
     uColor: new THREE.Color(0.0, 0.0, 0.0),
     uTime: 0.0,
-    uTest: 1.0,
   },
-  // vertex shader
-  /*glsl*/ `
-    varying vec2 vUv;
-    uniform float uTime;
-
-    void main() {
-        vec4 modelPosition = modelMatrix * vec4(position, 1.0);
-        modelPosition.y += sin(modelPosition.x * 4.0 + uTime) * 0.2;
-
-        vec4 viewPosition = viewMatrix * modelPosition;
-        vec4 projectedPosition = projectionMatrix * viewPosition;
-
-        gl_Position = projectedPosition;
-
-        vUv = uv;
-    }
-    `,
-  // fragment shader
-  /*glsl*/ `
-    varying vec2 vUv;
-
-    vec3 colorA = vec3(0.912,0.191,0.652);
-    vec3 colorB = vec3(1.000,0.777,0.052);
-
-    void main() {
-         
-        vec3 color = mix(colorA, colorB, vUv.x * vUv.y);
-        gl_FragColor = vec4(color, 1.0);
-    }
-`
+  vertexShader,
+  fragmentShader
 );
 
 extend({ CustomShaderMaterial });
 
-const Plane = () => {
+const Plane = ({ mouse }) => {
   const shaderRef = useRef();
-  useFrame(({ clock }) => {
+    const shaderWireframeRef = useRef();
+  const meshRef = useRef();
+  const meshWireframeRef = useRef();
+
+
+  useFrame(({ clock, camera }) => {
     shaderRef.current.uTime = clock.getElapsedTime();
-    // console.log(meshRef.current.uTime);
+    // shaderWireframeRef.current.uTime = clock.getElapsedTime();
+
+    meshRef.current.rotation.y = -mouse.current.x * 0.2;
+    meshRef.current.rotation.x = mouse.current.y * 0.2;
+
+    // meshWireframeRef.current.rotation.y = -mouse.current.x * 0.2;
+    // meshWireframeRef.current.rotation.x = mouse.current.y * 0.2;
+
+    // camera.position.y = 1;
+    camera.lookAt(meshRef.current.position);
   });
 
   return (
-    <mesh>
-      <planeGeometry args={[1, 1, 20, 20]} />
-      <customShaderMaterial ref={shaderRef} wireframe />
-    </mesh>
+    <group>
+      <mesh ref={meshRef}>
+        <planeGeometry args={[3, 3, 512, 512]} />
+        <customShaderMaterial ref={shaderRef} />
+      </mesh>
+      {/* <mesh ref={meshWireframeRef} position={[0,0,0.1]} >
+        <planeGeometry args={[3, 3, 30, 30]} />
+        <customShaderMaterial ref={shaderWireframeRef} wireframe  />
+      </mesh> */}
+    </group>
   );
 };
 
-export const Scene = () => {
+export const Scene = ({ mouse }) => {
   return (
-    <Canvas camera={{ position: [0, 0, 1] }}>
-      <Plane />
+    <Canvas camera={{ position: [0, 0, 5], fov: 10 }}>
+      <EffectComposer>
+        <Noise
+          premultiply
+          opacity={1}
+          blendFunction={BlendFunction.SOFT_LIGHT}
+        />
+      </EffectComposer>
+
+      {/* <OrbitControls /> */}
+      <Plane mouse={mouse} />
+      {/* <mesh scale={0.2}>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshBasicMaterial color="red" />
+      </mesh> */}
     </Canvas>
   );
 };
