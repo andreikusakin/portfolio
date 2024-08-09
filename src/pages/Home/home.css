@@ -1,6 +1,5 @@
 .home-page {
   position: absolute;
-  overflow: hidden;
   color: #fff;
   font-family: "Bandein Sans Web", sans-serif;
   display: flex;
@@ -12,40 +11,45 @@
 
 .home-page_content {
   display: flex;
-  justify-content: center;
   align-items: center;
-
   text-transform: uppercase;
+
+  justify-content: center;
+  position: relative;
 }
 
 .home-page_text {
   text-align: right;
-  overflow: hidden;
-  letter-spacing: clamp(0.02em, 0.05em + 0.3vw, 1em);
-  flex-basis: 32rem;
+  letter-spacing: clamp(0.02em, 0.01em + 0.3vw, 1em);
   padding-right: 2rem;
   font-size: clamp(0.2em, 2vw + 0.5em, 1em);
+  overflow-x: hidden;
+  position: absolute;
+  right: 0;
+  white-space: nowrap;
 }
 
 .home-nav {
+  overflow-x: hidden;
+  position: absolute;
+  left: 0;
+  width: max-content;
   font-size: clamp(1em, 2vw + 2em, 4em);
-  /* font-weight: 700; */
   font-family: "Bandein Sans Strange Variable", sans-serif;
   font-variation-settings: "wdth" 400;
   font-weight: 500;
   letter-spacing: 0.2em;
-  flex-basis: 32rem;
-  overflow: hidden;
 }
-.list-none {
+
+.home-nav ul {
   list-style: none;
-  padding: 0 0;
-  margin: 0 0;
+  padding: 0;
+  margin: 0;
 }
+
 .home-menu_item {
   margin-left: 2rem;
 }
-
 
 .middle-line {
   border: 1px solid #fff;
@@ -54,8 +58,8 @@
 
 .home-socials {
   position: absolute;
-  left: 25vw;
-  bottom: 20vh;
+  left: 25%;
+  bottom: 20%;
 }
 
 .home-socials_item {
