@@ -36,7 +36,7 @@ function App() {
         transition={{ duration: 2, delay: 1 }}
         className="bg-canvas"
       >
-        <Scene mouse={mouse} route={location.pathname} />
+        <Scene mouse={mouse} path={location.pathname} />
       </motion.div>
       <Menu visible={menuVisible} />
       <AnimatePresence mode="wait">

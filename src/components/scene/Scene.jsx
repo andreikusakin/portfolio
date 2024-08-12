@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
 import {
   OrbitControls,
@@ -8,14 +8,13 @@ import {
 } from "@react-three/drei";
 import { vertexShader } from "./vertexShader";
 import { fragmentShader } from "./fragmentShader";
-import {
-  EffectComposer,
-  Noise,
-  ChromaticAberration,
-} from "@react-three/postprocessing";
-import { GlitchMode, BlendFunction, ToneMappingMode } from "postprocessing";
-import { motion } from "framer-motion-3d"
-import { MotionCanvas, LayoutCamera } from "framer-motion-3d"
+import { EffectComposer, Noise } from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
+
+import { MotionCanvas, LayoutCamera } from "framer-motion-3d";
+import { Mesh, PlaneGeometry, Group } from "three";
+
+extend({ Mesh, PlaneGeometry, Group });
 
 const CustomShaderMaterial = shaderMaterial(
   {
@@ -30,10 +29,9 @@ extend({ CustomShaderMaterial });
 
 const Plane = ({ mouse }) => {
   const shaderRef = useRef();
-    const shaderWireframeRef = useRef();
+  const shaderWireframeRef = useRef();
   const meshRef = useRef();
   const meshWireframeRef = useRef();
-
 
   useFrame(({ clock, camera }) => {
     shaderRef.current.uTime = clock.getElapsedTime();
@@ -46,7 +44,7 @@ const Plane = ({ mouse }) => {
     // meshWireframeRef.current.rotation.x = mouse.current.y * 0.2;
 
     // camera.position.y = 1;
-    camera.lookAt(meshRef.current.position);
+    camera.lookAt(0, 0, 0);
   });
 
   return (
@@ -63,10 +61,57 @@ const Plane = ({ mouse }) => {
   );
 };
 
-export const Scene = ({ mouse }) => {
+export const Scene = ({ mouse, path }) => {
+  const canvasRef = useRef();
+  const cameraRef = useRef();
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (canvasRef.current && cameraRef.current) {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        canvasRef.current.style.width = `${width}px`;
+        canvasRef.current.style.height = `${height}px`;
+        cameraRef.current.aspect = width / height;
+        cameraRef.current.updateProjectionMatrix();
+      }
+    };
+
+    // Set initial size
+    handleResize();
+
+    // Add resize event listener
+    window.addEventListener('resize', handleResize);
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  console.log(path);
+  const cameraPositions = {
+    "/": { position: [0, 0, 5] },
+    "/about": { position: [1, 0, 5] },
+    "/contact": { position: [-1, 1, 5] },
+    "/work": { position: [0, -1, 5] },
+  };
+
+  const { position } = cameraPositions[path] || cameraPositions["/"];
+
   return (
-    <Canvas>
-        <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={10} />
+    <MotionCanvas 
+      ref={canvasRef}
+    >
+      <LayoutCamera
+        ref={cameraRef}
+        initial={{ x: 0, y: 0, z: 5 }}
+        animate={{ x: position[0], y: position[1], z: position[2] }}
+        transition={{ duration: 2 }}
+        fov={10}
+        makeDefault
+      />
+
       <EffectComposer>
         <Noise
           premultiply
@@ -81,6 +126,6 @@ export const Scene = ({ mouse }) => {
         <boxGeometry args={[1, 1, 1]} />
         <meshBasicMaterial color="red" />
       </mesh> */}
-    </Canvas>
+    </MotionCanvas>
   );
 };
