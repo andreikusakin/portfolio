@@ -8,7 +8,7 @@ export const socials = [
     link: "https://github.com/andreikusakin",
   },
   {
-    name: "twitter",
-    link: "https://twitter.com/AndrewKusakin",
+    name: "x/twitter",
+    link: "https://x.com/AndrewKusakin",
   },
 ];
