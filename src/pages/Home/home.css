@@ -84,6 +84,7 @@
     padding: 0;
     flex-basis: 0;
     width: 80vw;
+    bottom: 10%;
     clip-path: none;
     margin-bottom: 1rem;
     overflow: visible;
@@ -95,6 +96,7 @@
     width: 80vw;
     text-align: right;
     overflow: visible;
+    top: 10%;
   }
   .home-socials {
     left: 15vw;
