@@ -1,19 +1,16 @@
 import "./App.css";
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
-import Menu from "./components/menu/Menu";
-import { Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
-import { useState, useEffect } from "react";
 import Work from "./pages/Work/Work";
+import Menu from "./components/menu/Menu";
 import { Scene } from "./components/scene/Scene";
-
 
 function App() {
   const location = useLocation();
-
   const [menuVisible, setMenuVisible] = useState(false);
   const mouse = useRef({ x: 0, y: 0 });
 
@@ -31,16 +28,15 @@ function App() {
     mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
   };
 
-
   return (
     <div className="App" onMouseMove={handleMouseMove}>
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 2 }}
-        transition={{ duration: 2, delay: 2 }}
-        className="background"
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2, delay: 1 }}
+        className="bg-canvas"
       >
-        <Scene mouse={mouse} />
+        <Scene mouse={mouse} route={location.pathname} />
       </motion.div>
       <Menu visible={menuVisible} />
       <AnimatePresence mode="wait">

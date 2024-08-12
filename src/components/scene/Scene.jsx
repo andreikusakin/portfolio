@@ -14,6 +14,8 @@ import {
   ChromaticAberration,
 } from "@react-three/postprocessing";
 import { GlitchMode, BlendFunction, ToneMappingMode } from "postprocessing";
+import { motion } from "framer-motion-3d"
+import { MotionCanvas, LayoutCamera } from "framer-motion-3d"
 
 const CustomShaderMaterial = shaderMaterial(
   {
@@ -63,11 +65,12 @@ const Plane = ({ mouse }) => {
 
 export const Scene = ({ mouse }) => {
   return (
-    <Canvas camera={{ position: [0, 0, 5], fov: 10 }}>
+    <Canvas>
+        <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={10} />
       <EffectComposer>
         <Noise
           premultiply
-          opacity={1}
+          opacity={1.2}
           blendFunction={BlendFunction.SOFT_LIGHT}
         />
       </EffectComposer>

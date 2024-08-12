@@ -6,14 +6,11 @@
   padding-left: 5vw;
 }
 
-
-
 .work-sections {
   display: flex;
   justify-content: space-between;
-  
 }
-.work-left{
+.work-left {
   position: relative;
   max-width: 30rem;
   width: 35%;
@@ -23,42 +20,27 @@
   padding: 0;
 }
 
-
-
 .work-left h3 {
   text-transform: uppercase;
   font-family: "Bandein Sans Strange Variable", sans-serif;
   font-variation-settings: "wdth" 400;
   font-weight: 600;
   font-size: clamp(1rem, 1vw + 0.7rem, 2rem);
-  
 }
 
 .work-right {
   position: relative;
   width: 65%;
-  
-  
 }
 
 .project-section {
-  position:absolute;
+  position: absolute;
 }
-
-
-
-
-
-
-
-
 
 .project-content {
   width: 80%;
   height: 60vh;
 }
-
-
 
 .project-title hr {
   border: #fff solid 1px;
@@ -69,7 +51,7 @@
   z-index: -1;
 
   position: absolute;
-  
+
   left: 20%;
   /* position: fixed; */
   margin-left: auto;
@@ -90,7 +72,6 @@
   font-size: clamp(1rem, 1vw + 1rem, 2rem);
 }
 
-
 .project-category {
   font-family: "Bandein Sans Strange Variable", sans-serif;
   margin-left: 10%;
@@ -102,7 +83,6 @@
 @media (max-width: 1000px) {
   .work-page {
     width: 100%;
-    
   }
 }
 
@@ -117,4 +97,3 @@
     width: 0;
   }
 }
-
