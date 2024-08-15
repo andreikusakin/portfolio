@@ -8,12 +8,11 @@
 
 .work-sections {
   display: flex;
-  justify-content: space-between;
 }
 .work-left {
-  position: relative;
   max-width: 30rem;
   width: 35%;
+  z-index: 2;
 }
 
 .work-left ul {
@@ -28,64 +27,43 @@
   font-size: clamp(1rem, 1vw + 0.7rem, 2rem);
 }
 
-.work-right {
-  position: relative;
+.project {
   width: 65%;
+  max-width: 1200px;
+  background-color: #0000001f;
+  backdrop-filter: blur(50px);
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.project-section {
-  position: absolute;
+.project img {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+  border-radius: 0.5rem;
 }
 
-.project-content {
-  width: 80%;
-  height: 60vh;
+.project-info {
+  display: flex;
+  justify-content: space-between;
 }
 
 .project-title hr {
   border: #fff solid 1px;
-  /* margin-bottom: 30vh; */
-}
-
-.project-photo {
-  z-index: -1;
-
-  position: absolute;
-
-  left: 20%;
-  /* position: fixed; */
-  margin-left: auto;
-  background-size: cover;
-  background-position: center;
-  height: 70vh;
-  width: 20vw;
-  max-width: 30rem;
-  max-height: 60rem;
-  transform: translateX(10rem);
 }
 
 .project-description {
-  margin-top: 30%;
-  margin-left: auto;
-  margin-right: 10%;
-  max-width: 40%;
-  font-size: clamp(1rem, 1vw + 1rem, 2rem);
+  width: 70%;
+  font-size: clamp(0.5rem, 1vw + 0.5rem, 1.5rem);
 }
 
 .project-category {
   font-family: "Bandein Sans Strange Variable", sans-serif;
-  margin-left: 10%;
-  margin-top: 5%;
-  max-width: 40%;
-  font-size: clamp(1rem, 1vw + 1rem, 2rem);
+  padding-bottom: 1rem;
 }
-
-@media (max-width: 1000px) {
-  .work-page {
-    width: 100%;
-  }
-}
-
 @media (max-width: 768px) {
   .work-left {
     width: 80%;
@@ -93,7 +71,12 @@
   .work-left h3 {
     font-size: clamp(1rem, 2vw + 1rem, 3rem);
   }
-  .work-right {
-    width: 0;
+  .work-sections {
+    flex-direction: column;
+  }
+
+  .project {
+    width: 100%;
+    padding-bottom: 1rem;
   }
 }
