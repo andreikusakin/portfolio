@@ -87,7 +87,7 @@ export default function Home() {
               transition={{ duration: 1.5, type: "tween" }}
               exit={{ x: 780, opacity: 0 }}
             >
-              Web designer & developer
+              Software Developer
             </motion.p>
           </motion.div>
         </div>
